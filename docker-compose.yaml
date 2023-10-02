@@ -24,9 +24,13 @@ services:
       DB_PASSWD: fullcycle123
       DB_NAME: desafil_fc
       APP_PORT: 3000
+    depends_on:
+      - database
 
   nginx:
     build:
       context: nginx
     ports:
       - 8080:80
+    depends_on:
+      - backend
