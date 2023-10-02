@@ -1,0 +1,32 @@
+version: "3"
+services:
+  database:
+    image: mysql:8.1.0
+    container_name: desafio-fc3-database
+    restart: always
+    environment:
+      MYSQL_USER: fullcycle
+      MYSQL_PASSWORD: fullcycle123
+      MYSQL_DATABASE: desafil_fc
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+  backend:
+    build:
+      context: backend
+    container_name: desafil-fc3-backend
+    restart: always
+    environment:
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_USER: fullcycle
+      DB_PASSWD: fullcycle123
+      DB_NAME: desafil_fc
+      APP_PORT: 3000
+
+  nginx:
+    build:
+      context: nginx
+    ports:
+      - 8080:80
