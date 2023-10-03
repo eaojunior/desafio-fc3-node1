@@ -24,6 +24,8 @@ services:
       DB_PASSWD: fullcycle123
       DB_NAME: desafil_fc
       APP_PORT: 3000
+    volumes:
+      - ./backend/src:/src
     depends_on:
       - database
 
