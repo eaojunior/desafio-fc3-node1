@@ -26,6 +26,7 @@ services:
       DB_NAME: desafil_fc
       APP_PORT: 3000
     volumes:
+    - ./backend/src:/src
       - backend:/src/node_modules
     depends_on:
       - database
